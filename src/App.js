@@ -18,6 +18,7 @@ import {
 } from "./components/ui/alert-dialog";
 
 function App() {
+  let [open, setOpen] = useState(false);
   let [search, setSearch] = useState("");
   let [darkMode, setDarkMode] = useState(false);
   let [loading, setLoading] = useState(false);
@@ -44,6 +45,7 @@ function App() {
           response.json().then((data) => {
             setDefinition(data);
             setLoading(false);
+            setOpen(true);
           });
         } else {
           setDefinition([]);
@@ -70,7 +72,10 @@ function App() {
   };
 
   return (
-    <Drawer open={loading || definition.length > 0}>
+    <Drawer
+      open={open && (loading || definition.length > 0)}
+      onOpenChange={setOpen}
+    >
       <AlertDialog open={error}>
         <div className="relative h-screen w-screen">
           <div className="absolute right-5 top-4 flex space-x-2 items-center">
