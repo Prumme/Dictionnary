@@ -82,22 +82,28 @@ function App() {
             <Switch
               checked={darkMode}
               id="darkMode-switch"
+              data-testid="switchDarkMode"
               onClick={() => onChangeDarkMode()}
             />
             <Label htmlFor="darkMode-switch">Dark Mode</Label>
           </div>
-          <div class="h-1/2 flex justify-center items-center">
+          <div className="h-1/2 flex justify-center items-center">
             <div className="w-1/2 flex space-x-2">
               <Input
                 id="search"
+                data-testid="inputSearch"
                 type="search"
                 placeholder="Insert the word you search"
-                autocomplete="off"
+                autoComplete="off"
                 value={search}
                 onChange={(e) => onChangeSearch(e)}
               />
               <DrawerTrigger asChild>
-                <Button disabled={available} onClick={() => onSearch()}>
+                <Button
+                  disabled={available}
+                  onClick={() => onSearch()}
+                  data-testid="buttonSearch"
+                >
                   Search
                 </Button>
               </DrawerTrigger>
@@ -147,7 +153,7 @@ function App() {
                                 className="space-y-2"
                                 key={"definition-" + index}
                               >
-                                <div class="flex space-x-2">
+                                <div className="flex space-x-2">
                                   <p>Definition: </p>
                                   <p className="">{definition.definition}</p>
                                 </div>
